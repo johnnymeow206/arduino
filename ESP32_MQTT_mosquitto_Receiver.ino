@@ -7,15 +7,6 @@
   This example code is in the public domain.
 */
 #include <WiFi.h>
-/*
-  ArduinoMqttClient - WiFi Simple Receive
-  This example connects to a MQTT broker and subscribes to a single topic.
-  When a message is received it prints the message to the serial monitor.
-  The circuit:
-  - Arduino MKR 1000, MKR 1010 or Uno WiFi Rev.2 board
-  This example code is in the public domain.
-*/
-#include <WiFi.h>
 #include <WiFiClient.h>
 #include <ArduinoMqttClient.h>
 #if defined(ARDUINO_SAMD_MKRWIFI1010) || defined(ARDUINO_SAMD_NANO_33_IOT) || defined(ARDUINO_AVR_UNO_WIFI_REV2)
