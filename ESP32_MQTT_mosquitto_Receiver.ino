@@ -27,7 +27,7 @@ MqttClient mqttClient(wifiClient);
 
 const char broker[] = "test.mosquitto.org";
 int        port     = 1883;
-const char topic[]  = "NTOUEE/00953106";
+const char topic[]  = "My name is Johnnymeow";
 
 void setup() {
   //Initialize serial and wait for port to open:
