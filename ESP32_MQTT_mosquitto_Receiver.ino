@@ -9,18 +9,12 @@
 #include <WiFi.h>
 #include <WiFiClient.h>
 #include <ArduinoMqttClient.h>
-#if defined(ARDUINO_SAMD_MKRWIFI1010) || defined(ARDUINO_SAMD_NANO_33_IOT) || defined(ARDUINO_AVR_UNO_WIFI_REV2)
-  #include <WiFiNINA.h>
-#elif defined(ARDUINO_SAMD_MKR1000)
-  #include <WiFi101.h>
-#elif defined(ARDUINO_ESP8266_ESP12)
-  #include <ESP8266WiFi.h>
-#endif
 
-#include "arduino_secrets.h"
+
+
 ///////please enter your sensitive data in the Secret tab/arduino_secrets.h
-char ssid[] = "robin";        // your network SSID (name)
-char pass[] = "mochi0607";    // your network password (use for WPA, or use as key for WEP)
+const char ssid[] = "robin";        // your network SSID (name)
+const char pass[] = "mochi0607";    // your network password (use for WPA, or use as key for WEP)
 
 // To connect with SSL/TLS:
 // 1) Change WiFiClient to WiFiSSLClient.
@@ -33,26 +27,30 @@ MqttClient mqttClient(wifiClient);
 
 const char broker[] = "test.mosquitto.org";
 int        port     = 1883;
-const char topic[]  = "NTOUEE/0990018";
+const char topic[]  = "NTOUEE/00953106";
 
 void setup() {
   //Initialize serial and wait for port to open:
   Serial.begin(9600);
+  /*
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
   }
-
   // attempt to connect to Wifi network:
   Serial.print("Attempting to connect to WPA SSID: ");
   Serial.println(ssid);
-  while (WiFi.begin(ssid, pass) != WL_CONNECTED) {
+  */
+  WiFi.begin(ssid, pass);
+  while (WiFi.status() != WL_CONNECTED) {
     // failed, retry
+    delay(500);
     Serial.print(".");
-    delay(5000);
+    
   }
 
-  Serial.println("You're connected to the network");
-  Serial.println();
+  Serial.println("WiFi connected");
+  Serial.println("IP address:");
+  Serial.println(WiFi.localIP());
 
   // You can provide a unique client ID, if not set the library uses Arduino-millis()
   // Each client must have a unique client ID
